@@ -1,1 +1,8 @@
-<p>chat-message works!</p>
+<div class="message">
+  <div class="user-avatar">{{ message.user.name.charAt(0) }}</div>
+  <div class="message-content">
+    <div class="user-name">{{ message.user.name }}</div>
+    <div class="message-text">{{ message.content }}</div>
+    <div class="message-timestamp">{{ message.timestamp | date:'short' }}</div>
+  </div>
+</div>

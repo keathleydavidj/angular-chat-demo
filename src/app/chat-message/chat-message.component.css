@@ -1,0 +1,38 @@
+.message {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.message-content {
+  flex-grow: 1;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.message-text {
+  background-color: #f1f0f0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message-timestamp {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 5px;
+}
