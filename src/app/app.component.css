@@ -14,3 +14,8 @@ h1 {
   margin: 0;
   border-bottom: 1px solid #e0e0e0;
 }
+
+app-chat-container {
+  height: 600px;
+  overflow-y: scroll;
+}
