@@ -3,8 +3,15 @@
     type="text"
     [(ngModel)]="newMessage"
     placeholder="Type a message..."
+    (input)="onInputChange($event)"
     (keyup.enter)="onSendMessage()"
     id="addMessageInput"
   >
   <button (click)="onSendMessage()">Send</button>
+  <div *ngIf="showMentionDropdown" class="mention-dropdown">
+    <div *ngIf="filteredUsers.length === 0" class="no-results">No matching users</div>
+    <div *ngFor="let user of filteredUsers" (click)="selectMention(user.name)" class="mention-item">
+      {{ user.name }}
+    </div>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 .chat-input {
+  position: relative;
   display: flex;
   padding: 20px;
   border-top: 1 px solid #e0e0e0;
@@ -23,4 +24,29 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.mention-dropdown {
+  position: absolute;
+  bottom: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 200px;
+}
+
+.mention-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.mention-item:hover {
+  background-color: #f0f0f0;
+}
+
+.no-results {
+  padding: 5px 10px;
+  color: #888;
 }
