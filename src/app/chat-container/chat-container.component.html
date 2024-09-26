@@ -4,3 +4,13 @@
   </div>
   <app-chat-input (sendMessage)="addMessage($event)"></app-chat-input>
 </div>
+<div class="user-profile">
+  <!-- <div class="user-avatar" [attr.title]="currentUser.name">
+    {{ currentUser.name.charAt(0) }}
+  </div> -->
+  <select #userSelect (change)="onUserChange(userSelect.value)">
+    <option *ngFor="let user of users; let i = index" [value]="i" [selected]="user.userID === currentUser.userID">
+      {{ user.name }}
+    </option>
+  </select>
+</div>
