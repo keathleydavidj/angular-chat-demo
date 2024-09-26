@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewChecked, ViewChild } from '@angular/core';
 import { NgForOf } from '@angular/common';
 
 import { User, ChatMessage } from '../models/chat.model';
@@ -12,7 +12,9 @@ import { ChatMessageComponent } from '../chat-message/chat-message.component';
   templateUrl: './chat-container.component.html',
   styleUrl: './chat-container.component.css'
 })
-export class ChatContainerComponent {
+export class ChatContainerComponent implements AfterViewChecked {
+  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+
   users: User[] = [
     {userID: 1, name: 'Kevin'},
     {userID: 2, name: 'Jeff'},
@@ -26,6 +28,8 @@ export class ChatContainerComponent {
     {id: 3, user: this.users[2], content: 'Hey folks!', timestamp: new Date()}
   ];
 
+  private shouldScrollToBottom = false;
+
   addMessage(content: string) {
     const newMessage: ChatMessage = {
       id: this.messages.length + 1,
@@ -34,5 +38,23 @@ export class ChatContainerComponent {
       timestamp: new Date()
     }
     this.messages.push(newMessage);
+    this.shouldScrollToBottom = true;
+  }
+
+  ngAfterViewChecked() {
+    if (this.shouldScrollToBottom) {
+      this.scrollToBottom();
+      this.shouldScrollToBottom = false;
+    }
+  }
+
+  private scrollToBottom(): void {
+    try {
+      const element = this.messagesContainer.nativeElement;
+      element.scrollTop = element.scrollHeight;
+      console.log(`scrolling to new message at ${element.scrollHeight}`)
+    } catch (err) {
+      console.error('Error scrolling to bottom: ', err);
+    }
   }
 }
