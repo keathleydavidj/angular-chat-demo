@@ -62,6 +62,9 @@ export class ChatContainerComponent implements AfterViewChecked {
         if (mentionedUser && mentionedUser.userID === this.currentUser.userID) {
           this.showToastNotification(`You were mentioned by ${user.name}`);
         }
+        // Add more logic here
+        //
+        //
       });
     }
   }
