@@ -1,16 +1,22 @@
 <div class="chat-input">
   <input
+    #messageInput
     type="text"
     [(ngModel)]="newMessage"
-    placeholder="Type a message..."
     (input)="onInputChange($event)"
+    (keydown)="onKeyDown($event)"
     (keyup.enter)="onSendMessage()"
-    id="addMessageInput"
+    placeholder="Type a message..."
   >
   <button (click)="onSendMessage()">Send</button>
   <div *ngIf="showMentionDropdown" class="mention-dropdown">
     <div *ngIf="filteredUsers.length === 0" class="no-results">No matching users</div>
-    <div *ngFor="let user of filteredUsers" (click)="selectMention(user.name)" class="mention-item">
+    <div
+      *ngFor="let user of filteredUsers; let i = index"
+      (click)="selectMention(user.name)"
+      class="mention-item"
+      [class.selected]="i === selectedIndex"
+    >
       {{ user.name }}
     </div>
   </div>
